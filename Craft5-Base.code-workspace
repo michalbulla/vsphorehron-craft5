@@ -1,0 +1,28 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      ".gitkeep": true,
+      "*.code-workspace": true,
+      "*.key*": true,
+      "*.sublime-*": true,
+      "**/.htaccess*": true,
+      "**/web.config": true,
+      "composer.lock": true,
+      "craft": true,
+      "gulpfile.js": true,
+      "LICENSE.md": true,
+      "node_modules": true,
+      "package-lock.json": true,
+      "storage": true,
+      "vendor": true,
+      "web/app": true,
+      "web/assets": true,
+      "web/cpresources": true
+    }
+  }
+}
