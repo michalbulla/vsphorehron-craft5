@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6cb017c0439bbabc4a4239bd2073eb64",
+    "content-hash": "b782550182a6c5b5acac3e8e2ebf634c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -420,6 +420,58 @@
             "time": "2024-03-23T01:31:54+00:00"
         },
         {
+            "name": "craftcms/ckeditor",
+            "version": "4.0.6",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/craftcms/ckeditor/zipball/6b949da6c11bbb9c6637021e88a33f6acf4290c2",
+                "reference": "6b949da6c11bbb9c6637021e88a33f6acf4290c2",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^5.0.0-beta.7",
+                "craftcms/html-field": "^3.0.0-alpha",
+                "nystudio107/craft-code-editor": ">=1.0.8 <=1.0.13 || ^1.0.16",
+                "php": "^8.2"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "CKEditor",
+                "handle": "ckeditor",
+                "documentationUrl": "https://github.com/craftcms/ckeditor/blob/master/README.md"
+            },
+            "autoload": {
+                "psr-4": {
+                    "craft\\ckeditor\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Pixel & Tonic",
+                    "homepage": "https://pixelandtonic.com/"
+                }
+            ],
+            "description": "Edit rich text content in Craft CMS using CKEditor.",
+            "keywords": [
+                "ckeditor",
+                "cms",
+                "craftcms",
+                "html",
+                "yii2"
+            ],
+            "support": {
+                "email": "support@craftcms.com",
+                "issues": "https://github.com/craftcms/ckeditor/issues?state=open",
+                "source": "https://github.com/craftcms/ckeditor",
+                "docs": "https://github.com/craftcms/ckeditor/blob/master/README.md",
+                "rss": "https://github.com/craftcms/ckeditor/commits/master.atom"
+            },
+            "time": "2024-05-15T21:44:09+00:00"
+        },
+        {
             "name": "craftcms/cms",
             "version": "5.1.7",
             "dist": {
@@ -567,6 +619,44 @@
                 "rss": "https://github.com/craftcms/flysystem/commits/master.atom"
             },
             "time": "2024-03-22T18:41:28+00:00"
+        },
+        {
+            "name": "craftcms/html-field",
+            "version": "3.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/craftcms/html-field/zipball/54f6e6178b696d5b7bb886631e161293b73d565e",
+                "reference": "54f6e6178b696d5b7bb886631e161293b73d565e",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^5.0.0-beta.1",
+                "php": "^8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "craft\\htmlfield\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pixel & Tonic",
+                    "homepage": "https://pixelandtonic.com/"
+                }
+            ],
+            "description": "Base class for Craft CMS field types with HTML values.",
+            "support": {
+                "email": "support@craftcms.com",
+                "issues": "https://github.com/craftcms/html-field/issues?state=open",
+                "source": "https://github.com/craftcms/html-field",
+                "docs": "https://github.com/craftcms/html-field/blob/main/README.md",
+                "rss": "https://github.com/craftcms/html-field/commits/main.atom"
+            },
+            "time": "2024-03-06T18:17:06+00:00"
         },
         {
             "name": "craftcms/plugin-installer",
@@ -1905,6 +1995,52 @@
             "time": "2023-08-25T10:54:48+00:00"
         },
         {
+            "name": "nystudio107/craft-code-editor",
+            "version": "1.0.19",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nystudio107/craft-code-editor/zipball/a793406e62cd6c7d8e25ac5e0fb2208b4206815b",
+                "reference": "a793406e62cd6c7d8e25ac5e0fb2208b4206815b",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "phpdocumentor/reflection-docblock": "^5.0.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "nystudio107\\codeeditor\\CodeEditor"
+            },
+            "autoload": {
+                "psr-4": {
+                    "nystudio107\\codeeditor\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "nystudio107",
+                    "homepage": "https://nystudio107.com"
+                }
+            ],
+            "description": "Provides a code editor field with Twig & Craft API autocomplete",
+            "keywords": [
+                "Craft",
+                "Monaco",
+                "cms",
+                "code",
+                "craftcms",
+                "css",
+                "editor",
+                "javascript",
+                "markdown",
+                "twig"
+            ],
+            "time": "2024-04-15T16:35:48+00:00"
+        },
+        {
             "name": "paragonie/constant_time_encoding",
             "version": "v2.7.0",
             "dist": {
@@ -2195,11 +2331,6 @@
         {
             "name": "phpstan/phpdoc-parser",
             "version": "1.29.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "fcaefacf2d5c417e928405b71b400d4ce10daaf4"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/fcaefacf2d5c417e928405b71b400d4ce10daaf4",
@@ -2209,17 +2340,6 @@
             "require": {
                 "php": "^7.2 || ^8.0"
             },
-            "require-dev": {
-                "doctrine/annotations": "^2.0",
-                "nikic/php-parser": "^4.15",
-                "php-parallel-lint/php-parallel-lint": "^1.2",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^1.5",
-                "phpstan/phpstan-phpunit": "^1.1",
-                "phpstan/phpstan-strict-rules": "^1.0",
-                "phpunit/phpunit": "^9.5",
-                "symfony/process": "^5.2"
-            },
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -2228,15 +2348,10 @@
                     ]
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
-            "support": {
-                "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.29.1"
-            },
             "time": "2024-05-31T08:52:43+00:00"
         },
         {
@@ -4686,6 +4801,66 @@
             "time": "2019-11-14T14:08:48+00:00"
         },
         {
+            "name": "tungsten/tungsten",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/atomic74/craft3-tungsten.git",
+                "reference": "fc84775adbdb814c09fa01ee3bd4a68614ec2bf2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/atomic74/craft3-tungsten/zipball/fc84775adbdb814c09fa01ee3bd4a68614ec2bf2",
+                "reference": "fc84775adbdb814c09fa01ee3bd4a68614ec2bf2",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^5.0.0",
+                "php": "^8.2"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Tungsten",
+                "handle": "tungsten",
+                "hasCpSettings": true,
+                "hasCpSection": false,
+                "developer": "Tungsten Creative Group",
+                "developerUrl": "https://www.atomic74.com",
+                "documentationUrl": "https://github.com/atomic74/craft3-tungsten/blob/master/README.md",
+                "changelogUrl": "https://raw.githubusercontent.com/atomic74/craft3-tungsten/master/CHANGELOG.md",
+                "class": "tungsten\\tungsten\\Tungsten"
+            },
+            "autoload": {
+                "psr-4": {
+                    "tungsten\\tungsten\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tungsten Creative",
+                    "homepage": "http://atomic74.com"
+                }
+            ],
+            "description": "Miscellaneous goodies needed for Tungsten Craft projects",
+            "keywords": [
+                "Craft",
+                "cms",
+                "craft-plugin",
+                "craftcms",
+                "tungsten"
+            ],
+            "support": {
+                "docs": "https://github.com/atomic74/craft3-tungsten/blob/master/README.md",
+                "issues": "https://github.com/atomic74/craft3-tungsten/issues",
+                "source": "https://github.com/atomic74/craft3-tungsten/tree/5.0.0"
+            },
+            "time": "2024-06-04T17:03:57+00:00"
+        },
+        {
             "name": "twig/twig",
             "version": "v3.8.0",
             "dist": {
@@ -6317,5 +6492,5 @@
     "platform-overrides": {
         "php": "8.2"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.2.0"
 }

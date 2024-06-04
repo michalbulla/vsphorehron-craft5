@@ -22,7 +22,9 @@
   "prefer-stable": true,
   "require": {
     "craftcms/aws-s3": "2.2.1",
+    "craftcms/ckeditor": "^4.0.6",
     "craftcms/cms": "^5.0.0",
+    "tungsten/tungsten": "^4.0",
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {
