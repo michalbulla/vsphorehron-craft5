@@ -1,0 +1,45 @@
+{% set link = 'member' in uri ? '/member/the-club/club-calendar' : 'club-calendar' %}
+
+<div class="upcoming-events">
+  {% cache %}
+    {% set featuredEvents = craft.calendar.events({
+      dateRangeStart: now|date('c'),
+      limit: 5,
+      search: ('eventFeatured:1')
+    }) %}
+    {% set regularEvents = craft.calendar.events({
+      dateRangeStart: now|date('c')
+    }).eventFeatured('not 1') %}
+    {% set events = featuredEvents|merge(regularEvents) %}
+    {% for event in events|slice(0,5) if not('member' not in uri and event.hide == 1) %}
+      <div class="event {{ event.calendar.handle|kebab }} {{ event.eventFeatured ? 'featured' }}">
+        <time datetime="{{ event.startDate.format('Y-m-d') }}" class="badge">
+          <div class="left-col">
+            <span>{{ event.startDate.format('j') }}</span>
+          </div>
+          <div class="right-col">
+            <strong>{{ event.startDate.format('M') }}</strong>
+            <span>{{ event.startDate.format('l') }}</span>
+          </div>
+        </time>
+        <div class="description">
+          <div>
+            <div class="time">
+              {% if event.allDay %}
+                All Day
+              {% else %}
+                {{ event.startDate.format("i") == '00' ? event.startDate.format('g a') : event.startDate.format("g:i a") }}
+                to
+                {{ event.endDate.format("i") == '00' ? event.endDate.format('g a') : event.endDate.format("g:i a") }}
+              {% endif %}
+            </div>
+            <h3><a href="{{ link }}/{{ event.slug }}/{{ event.startDate.format('Y/m/d') }}" class="js-event-nav">{{ event.title }}</a></h3>
+          </div>
+          <div class="event-type">
+            {{ event.calendar.name }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endcache %}
+</div>

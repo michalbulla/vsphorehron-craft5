@@ -1,0 +1,18 @@
+{% if entry.status == 'live' %}
+  {% set spaceAboveClass = entry.spaceAbove %}
+  {% set spaceBelowClass = entry.spaceBelow %}
+  {% set hrStyle = [] %}
+
+  {%- if spaceBelowClass == 'custom' %}
+    {% set margin = 'margin-bottom: ' ~ entry.spaceBelowCustom ~ 'em' %}
+    {% set hrStyle = hrStyle|merge([margin]) %}
+  {% endif %}
+
+  {%- if not entry.visible %}
+    {% set hrStyle = hrStyle|merge(['border-color: transparent !important']) %}
+  {% endif %}
+
+  <div class="divider {{ spaceAboveClass }}"{% if spaceAboveClass == 'custom' %} style="padding-top: {{ entry.spaceAboveCustom }}em"{% endif %}>
+    <hr class="{{ spaceBelowClass }}"{% if hrStyle|length %} style="{{ hrStyle|join('; ') }}"{% endif %} />
+  </div>
+{% endif %}

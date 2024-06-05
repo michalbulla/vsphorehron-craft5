@@ -1,0 +1,134 @@
+// Place in source/sass/base/forms.scss
+
+// Form Layout ----------------------------------------------------------------
+
+.form-row {
+  @apply sm:flex gap-5;
+}
+
+// Form Fields ----------------------------------------------------------------
+
+.form-group {
+  @apply mb-6 flex-grow;
+}
+
+// Label
+.form-label {
+  @apply inline-block mb-1.5 font-bold text-sm;
+}
+
+// Required
+label.required::before {
+  content: '*';
+  @apply inline-block mr-1 text-red-700;
+}
+
+// Input
+.form-control {
+  @apply w-full py-1.5 px-3 rounded border shadow-inner border-gray-300 focus:ring focus:ring-blue-600 focus:ring-opacity-50 placeholder:text-gray-400/70 disabled:bg-gray-400;
+}
+
+// Help text
+.help-text {
+  @apply block pl-1 text-sm mt-1 text-gray-400;
+}
+
+// select.form-control:not([size]):not([multiple]) {
+//   height: calc(2.25rem + 2px);
+// }
+
+// .form-control-file,
+// .form-control-range {
+//   display: block;
+//   width: 100%;
+//   padding: 5px;
+// }
+
+// Checkboxes and Radios ------------------------------------------------------
+
+// .form-check {
+//   position: relative;
+//   display: block;
+//   padding-left: 1.25rem;
+// }
+
+// input[type="checkbox"],
+// input[type="radio"] {
+//   &.form-check-input {
+//     position: absolute;
+//     margin-left: -1.25rem;
+//   }
+// }
+
+// .form-check-input:disabled ~ .form-check-label {
+//   color: $color-placeholder;
+// }
+
+// .form-check-label {
+//   margin-bottom: 0;
+//   font-weight: normal;
+// }
+
+// .form-check-inline {
+//   display: -webkit-inline-box;
+//   display: -ms-inline-flexbox;
+//   display: inline-flex;
+//   -webkit-box-align: center;
+//   -ms-flex-align: center;
+//   align-items: center;
+//   padding-left: 0;
+//   margin-right: 0.75rem;
+// }
+
+// .form-check-inline .form-check-input {
+//   position: static;
+//   margin-top: 0;
+//   margin-right: 0.3125rem;
+//   margin-left: 0;
+// }
+
+// Form Validation ------------------------------------------------------------
+
+.form-group {
+  &.is-invalid {
+    .form-check-label {
+      @apply text-red-700;
+    }
+  }
+}
+
+.invalid-feedback {
+  @apply w-full mt-1 text-sm text-red-700;
+}
+
+.form-control.is-invalid,
+.custom-select.is-invalid {
+  @apply bg-red-700/10 border-red-700;
+}
+
+// .form-control.is-invalid:focus,
+// .custom-select.is-invalid:focus {
+//   border-color: $color-invalid;
+//   box-shadow: 0 0 0 0.2rem rgba($color-invalid, 0.25);
+// }
+
+// .form-control.is-invalid ~ .invalid-feedback,
+// .custom-select.is-invalid ~ .invalid-feedback {
+//   display: block;
+// }
+
+// .form-check-input.is-invalid ~ .form-check-label {
+//   color: $color-invalid;
+// }
+
+// .form-check-input.is-invalid ~ .invalid-feedback {
+//   display: block;
+// }
+
+.form-errors {
+  @apply text-red-700 mb-4;
+}
+
+ul.errors {
+  @apply my-1 pl-1;
+}

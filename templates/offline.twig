@@ -1,0 +1,32 @@
+{#
+ # Offline template
+ # ----------------
+ #
+ # This template is loaded whenever Craft encounters a server error.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Website offline - Scheduled maintenance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Custom styles for this template -->
+  <link href="/{{ craft.tungsten.assetUrl('styles.css') }}" rel="stylesheet">
+</head><meta name="resource-type" content="document" />
+<body>
+  <div class="max-w-lg px-4 py-12 mx-auto text-center text-gray-700">
+    <div class="inline-block w-20 h-20 text-blue-800/60">
+      <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="pause-circle" class="svg-inline--fa fa-pause-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm96-280v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16zm-112 0v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16z"></path></svg>
+    </div>
+    <p class="text-lg font-semibold text-blue-800/70">SCHEDULED MAINTENANCE</p>
+    <h1 class="mt-6 mb-8 text-3xl text-gray-800 md:text-4xl">Could you come back a little later?</h1>
+    <p class="mb-4 text-lg font-semibold">We're just in a middle of updating or changing something.</p>
+    <p class="mb-4">No need to be alarmed. We're showing you this page on purpose. This site is currently undergoing scheduled maintenance and the actual content should be back very soon. We're trying to work as fast as possible so coming back in about half an hour should do the trick.</p>
+    <p>Sorry for the inconvenience.</p>
+  </div>
+</body>
+</html>

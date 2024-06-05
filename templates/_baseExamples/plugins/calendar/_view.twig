@@ -1,0 +1,27 @@
+{% set currentMonth = "now"|date('n') %}
+{% set currentYear = "now"|date('Y') %}
+
+{# Get the url params for view, month and year #}
+{% set year = craft.app.request.getQueryParam('y')|default(currentYear) %}
+{% set month = craft.app.request.getQueryParam('m')|default(currentMonth) %}
+{% set view = craft.app.request.getQueryParam('v')|default('calendar') %}
+
+{# Set the current Year - Month #}
+{% set current = year  ~ "-" ~ month %}
+
+{% include 'events/_navigation' with {uri: uri, view: view, current: current, uri: uri } only %}
+
+{# {% include 'events/_legend' %} #}
+
+{% set monthCal = craft.calendar.month({
+  date: current,
+  calendar: activeCalendar ? activeCalendar : null
+}) %}
+
+<div class="calendar-view {%- if view == 'calendar' %} hidden md:block{% else %} hidden{% endif %}" >
+  {% include 'events/_calendar' with {monthCal: monthCal, year: year, month: month, activeCalendar: activeCalendar, uri: uri } only %}
+</div>
+
+<div class="list-view {%- if view == 'list' %} block{% else %} md:hidden{% endif %}" >
+  {% include 'events/_list' with {month: monthCal, uri: uri} only %}
+</div>

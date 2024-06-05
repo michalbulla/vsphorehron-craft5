@@ -1,0 +1,54 @@
+{# Place in templates/default/_layouts/email/default.twig #}
+
+{# subject: {{ form.name ~ ' Notification' }} #}
+{# fromEmail: {{ craft.app.projectConfig.get('email').fromEmail }} #}
+{# fromName: {{ craft.app.projectConfig.get('email').fromName }} #}
+{# replyToEmail: {{ craft.app.projectConfig.get('email').fromEmail }} #}
+{# includeAttachments: false #}
+{# description: Default form submission notification. #}
+
+{% extends '_layouts/email' %}
+
+{% block subject %}
+  {{ form.name }} Notification
+{% endblock %}
+
+{% block body %}
+  {% if form.pages|length > 1 %}
+    {% for page in form.pages %}
+      <br><br>
+      <h2>{{ page.label }}</h2>
+      {% for field in page.fields %}
+        {% if field.type == 'html' %}
+          {{ field.value|raw }}
+        {% elseif field.type != 'submit' %}
+          <p>
+            <strong>{{ field.label }}:</strong>
+            {% if field.getValueAsString() is not empty %}
+              {{ field.getValueAsString() }}
+            {% else %}
+              -- n/a --
+            {% endif %}
+          </p>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% else %}
+    {% for field in allFields %}
+      {% if field.type == 'html' %}
+        {{ field.value|raw }}
+      {% elseif field.type != 'submit' %}
+        <p>
+          <strong>{{ field.label }}:</strong>
+          {% if field.getValueAsString() is not empty %}
+            {{ field.getValueAsString() }}
+          {% else %}
+            -- n/a --
+          {% endif %}
+        </p>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  <hr>
+  <a href="{{ "#{siteUrl}cms/freeform/submissions/#{submission.id}" }}">View form submission details in the Control Panel</a>
+{% endblock %}

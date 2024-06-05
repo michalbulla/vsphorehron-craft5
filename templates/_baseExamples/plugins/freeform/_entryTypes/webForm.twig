@@ -1,0 +1,56 @@
+{# Place in templates/default/_entryTypes/webForm.twig #}
+
+{% extends "_layouts/base" %}
+{% set uri = entry.uri %}
+{% set showSidebar = entry.hideSidebar != 1 %}
+{% set pageHeading = entry.pageHeading|default(entry.title) %}
+
+{% block pageLayout %}
+  {% embed '_layouts/page/default' %}
+    {% block contentLayout %}
+      {% embed "_layouts/content/default" %}
+        {% block mainContent %}
+          <h1 class="main-heading">{{ pageHeading }}</h1>
+
+          {% if craft.app.request.getQueryParam('success') != '✓' %}
+
+            <div class="default-content">
+              {% include '_partials/contentBuilder' with {contentField: entry.mainContent, blocksDir: 'mainContent'} %}
+
+              <div class="divider default">
+                <hr class="default">
+              </div>
+
+              <p>Fields marked with <label class="required"></label> are required.</p>
+            </div>
+
+            {% if entry.form is defined and entry.form is not empty %}
+
+              {% set formHandle = entry.form.handle %}
+
+              {{ craft.freeform.form(formHandle, {
+                id: formHandle,
+                submitClass: 'btn',
+                returnUrl: craft.app.request.absoluteUrl ~ '?success=✓'
+              }).render() }}
+            {% endif %}
+
+          {% else %}
+
+            {# The form has been successfully submitted, render the success content #}
+            {% set successContent = "Thank you for submitting the form." %}
+
+            {% if entry.successContent is defined and entry.successContent is not empty %}
+              {% set successContent = entry.successContent|default(successContent) %}
+            {% endif %}
+
+            <div class="default-content">
+              {{ successContent }}
+            </div>
+
+          {% endif %}
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

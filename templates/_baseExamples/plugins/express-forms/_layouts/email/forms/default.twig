@@ -1,0 +1,32 @@
+{# Place in _layouts/email/forms/default.twig #}
+---
+name: 'Default Notification'
+fromName: '{{ craft.app.systemSettings.getSettings("email").fromName }}'
+fromEmail: '{{ craft.app.systemSettings.getSettings("email").fromEmail }}'
+replyTo: '{{ craft.app.systemSettings.getSettings("email").fromEmail }}'
+cc:
+bcc:
+subject: '{{ form.name }} Notification'
+includeAttachments: false
+description: 'Default form submission notification.'
+---
+{% extends '_layouts/email' %}
+
+{% block subject %}
+  {{ form.name }} Notification
+{% endblock %}
+
+{% block body %}
+  {% for field in form.fields %}
+    {% if field.type != 'submit' %}
+      <p>
+        <strong>{{ field.label }}:</strong>
+        {% if field.getValueAsString is not empty %}
+          {{ field.getValueAsString }}
+        {% else %}
+          -- n/a --
+        {% endif %}
+      </p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

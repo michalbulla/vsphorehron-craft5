@@ -1,0 +1,28 @@
+<div class="event-time">
+  <h2 class="mb-4 text-3xl font-black text-center uppercase text-brand-blue">
+    {% if event.multiDay %}
+      {{ event.startDate.format('l, M j') }}
+      <span>&bull;</span>
+      {% if event.allDay %}
+        All Day
+      {% else %}
+        {{ event.startDate.format('i') == '00' ? event.startDate.format('g a') : event.startDate.format("g:i a") }}
+        to
+        {{ event.endDate.format('l, M j') }}
+        <span>&bull;</span>
+        {{ event.endDate.format('i') == '00' ? event.endDate.format('g a') : event.endDate.format('g:i a') }}
+      {% endif %}
+    {% else %}
+      {{ event.startDate.format('l, M j') }}
+      <span>&bull;</span>
+      {% if event.allDay %}
+        All Day
+      {% else %}
+        {{ event.startDate.format('i') == '00' ? event.startDate.format('g a') : event.startDate.format("g:i a") }}
+        to
+        {{ event.endDate.format('i') == '00' ? event.endDate.format('g a') : event.endDate.format('g:i a') }}
+      {% endif %}
+    {% endif %}
+  </h2>
+  <h3 class="mb-6 text-2xl font-black text-center uppercase text-brand-teal-light">{{ event.directionslocation }}</h3>
+</div>

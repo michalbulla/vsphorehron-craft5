@@ -1,0 +1,14 @@
+{#
+  {% include '_partials/formfields/text' with {field: form.fields.HANDLE} only %}
+#}
+<div>
+  <label class="block mb-2 text-sm font-bold tracking-wider uppercase" for="{{ field.handle }}">{{ field.label }}{{ field.isRequired ? ' *' }}</label>
+  <input class="w-full p-3 border border-gray-400 shadow-sm focus:ring focus:ring-violet-600 focus:ring-opacity-50" id="{{ field.handle }}" type="{{ field.type }}" name="{{ field.handle }}" value="{{ field.value }}">
+  {% if field.errors %}
+    <ul class="mt-2 text-sm text-red-700 uppercase">
+      {% for error in field.errors %}
+        <li>{{ error|t }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>

@@ -1,0 +1,32 @@
+{# Place in _layouts/forms/default.twig #}
+
+{% if not form.valid %}
+  <div class="text-red-700">
+    There are problems with your form submission. Please review the form and try submitting again.
+    <ul>
+      {% for error in form.errors %}
+        <li>{{ error|t }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+{{ form.openTag({ return: "#{uri}?success=✓" }) }}
+  {% for field in form.fields %}
+    {% if field.type == "hidden" %}
+      {# Hidden field formatting contents #}
+    {% elseif field.type == "textarea" %}
+      {% include '_partials/formfields/textarea' with {field: field} only %}
+    {% elseif field.type == "file" %}
+      {# File field formatting contents #}
+    {% else %}
+      {# Check on a Field Handle for Exception to formatting #}
+      {% if field.handle == "myFieldHandle" %}
+        {# Specific field formatting overrides #}
+      {% else %}
+        {% include '_partials/formfields/text' with {field: field} only %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% include '_partials/formfields/recaptcha' with {form: form} only %}
+  <input class="" type="submit" value="Submit">
+{{ form.closeTag }}

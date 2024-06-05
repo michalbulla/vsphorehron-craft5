@@ -1,0 +1,84 @@
+{% extends "_layouts/base" %}
+
+{% set occurrenceDate = null %}
+{% if year is defined and month is defined and day is defined %}
+  {% set occurrenceDate = year ~ '-' ~ month ~ '-' ~ day %}
+{% endif %}
+
+{% set seomate = {
+    profile: 'eventProfile',
+    
+    config: {
+        includeSitenameInTitle: false
+    },
+    
+    meta: {
+        title: event.title,
+        description: event.seoDescription,
+        image: event.seoImage.one
+    },
+} %}
+
+{% set pageHeading = event.title %}
+{% set eventDate = event.startDate %}
+
+{# Get the url params for view, month and year #}
+{% set year = eventDate|date('Y') %}
+{% set month = eventDate|date('n') %}
+{% set view = craft.app.request.getQueryParam('v')|default('calendar') %}
+{% set eventsIndexUrl = url('club-calendar') %}
+{% set lastPageUrl = craft.app.request.referrer %}
+
+{% block pageLayout %}
+  {% embed '_layouts/page/narrow' %}
+    {% block subNavMobile %}
+        
+    {% endblock %}
+    {% block crumbs %}
+      {% apply spaceless %}
+        <ul class="my-3 space-x-2 text-sm text-gray-500">
+          <li class="inline-block"><a href="/">Home</a></li>
+          <li class="inline-block">/</li>
+          <li class="inline-block"><a href="/experiences">Experiences</a></li>
+          <li class="inline-block">/</li>
+          <li class="inline-block"><a href="/experiences/calendar-of-events">Calendar of Events</a></li>
+          <li class="inline-block">/</li>
+          <li class="inline-block">{{ event.title }}</li>
+        </ul>
+      {% endapply %}
+    {% endblock %}
+    {% block contentLayout %}
+      {% embed "_layouts/content/default" %}
+        
+        {% block mainContent %}
+          <h1 class="normal-case main-heading">{{ pageHeading }}</h1>
+          {% include 'events/_eventDetails' with {event:event} only %}
+          
+          <!-- Share Buttons -->
+          {% include '_partials/shareButtons' with {
+            url: event.url,
+            title: pageHeading,
+            excerpt: 'Erie Land Lights Event'
+          } only %}
+
+          {% cache %}
+            <div class="default-content">
+              {% include '_partials/contentBuilder' with {contentField: event.mainContent, blocksDir: 'mainContent'} %}
+            </div>
+          {% endcache %}
+
+          <div class="clear-both w-full pt-6 mt-6 border-t-2 border-brand-yellow-light ">
+            <a href="/experiences/calendar-of-events" class="btn">view full calendar</a>
+          </div>
+
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}
+
+{% set navJs %}
+  var eventNavView = '{{ view }}';
+{% endset %}
+
+{% js navJs %}

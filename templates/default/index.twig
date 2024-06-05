@@ -1,0 +1,17 @@
+{# Homepage template #}
+
+{% extends "_layouts/base" %}
+{% set uri = entry.uri %}
+
+{% block pageLayout %}
+  {% embed '_layouts/page/homePage' %}
+    {% block contentLayout %}
+      <div class="main-content" id="main-content-start">
+        <div class="container">
+          {# {% include '_partials/carousel' %} #}
+          <h1>{{ entry.title }}</h1>
+        </div>
+      </div>
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

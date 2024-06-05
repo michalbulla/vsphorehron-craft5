@@ -1,0 +1,14 @@
+{% extends "_layouts/base" %}
+{% set uri = entry.uri %}
+{% set showSidebar = entry.hideSidebar != 1 %}
+{% set pageHeading = entry.pageHeading|default(entry.title) %}
+
+{% block pageLayout %}
+  {% embed '_layouts/page/default' %}
+  {% endembed %}
+  
+  {# Fancybox js and css code #}
+  {% css "https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" %}
+  {% js "https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js" %}
+
+{% endblock %}

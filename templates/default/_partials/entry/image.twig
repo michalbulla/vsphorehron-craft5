@@ -1,0 +1,56 @@
+{% if entry.status == 'live' %}
+  {% set borderClass = entry.showBorder ? 'img-border' %}
+  {% set transform = entry.imageSize.value %}
+
+  {% set pageWidth = '' %}
+  {% set contentWidth = '' %}
+  {% for row in siteSettings.themeSettings %}
+    {% if row.setting == 'pageWidth' %}
+      {% set pageWidth = row.value %}
+    {% endif %}
+    {% if row.setting == 'contentWidth' %}
+      {% set contentWidth = row.value %}
+    {% endif %}
+  {% endfor %}
+
+  {% set imageFull = {
+      mode: 'fit',
+      width: pageWidth,
+      quality: 100
+  } %}
+
+  {% set imageFullWithSidebar = {
+      mode: 'fit',
+      width: contentWidth,
+      quality: 100
+  } %}
+
+  {% set image = entry.image.one %}
+
+  {% if transform == "imageFull" %}
+    {% if showSidebar %}
+      {% set transform = imageFullWithSidebar %}
+    {% else %}
+      {% set transform = imageFull %}
+    {% endif %}
+  {% endif %}
+
+  {% if image.width > image.getWidth(transform) %}
+    {% do image.setTransform(transform) %}
+  {% endif %}
+
+
+  <figure class="image w-full {{ entry.alignment }} {{ entry.imageSize.value }}" style="max-width:{{ image.width > image.getWidth(transform) ? image.width(transform) : image.width }}px;">
+    {# {% if entry.imageLink.getLink()|length %}
+      <a href="{{ entry.imageLink }}" {% if entry.imageLink.getTarget() == "_blank" %} target="_blank" {% endif %} title="{{ image.alternativeText|default(image.title) }}">
+    {% endif %} #}
+      <img class="{{ borderClass }} w-full" src="{{ image.url() }}" alt="{{ image.alternativeText|default(image.title) }}" />
+    {# {% if entry.imageLink is not empty %}
+      </a>
+    {% endif %} #}
+    {% if entry.caption %}
+      <figcaption class="caption">{{ entry.caption }}</figcaption>
+    {% endif %}
+  </figure>
+{% endif %}
+

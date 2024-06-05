@@ -1,0 +1,17 @@
+<p class="note center">To filter events, select one of the categories below. {% if activeCalendar is defined %} <a href="" class="js-calendar-nav">Remove the filter</a>.{% endif %}</p>
+<div class="event-legend">
+  {% set calendars = craft.calendar.calendars({
+      order: "name",
+      sort: "asc"
+  }) %}
+
+  {% for calendar in calendars %}
+    <a href="{{ calendar.handle }}" class="{{ calendar.handle|kebab }} js-calendar-nav {{ activeCalendar == calendar.handle ? 'active' }}">
+      {{ calendar.name }}
+    </a>
+  {% endfor %}
+</div>
+
+{% js %}
+  var eventCalendar = '{{ activeCalendar }}';
+{% endjs %}

@@ -1,0 +1,7 @@
+{% if currentUser %}
+  {% if entry is defined %}
+    <div class="admin-panel">
+      <a href="{{ entry.getCpEditUrl() }}">Edit This Page</a>
+    </div>
+  {% endif %}
+{% endif %}

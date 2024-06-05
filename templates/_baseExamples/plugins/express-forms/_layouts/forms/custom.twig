@@ -1,0 +1,28 @@
+<section id="custom-form">
+  <h2 class="mt-8 mb-3 text-3xl leading-tight text-content-h2">
+    Contact Form
+  </h2>
+  {% if not form.valid %}
+    <div class="mb-4 -mt-2 text-red-700">
+      There are problems with your form submission. Please review the form and try submitting again.
+      <ul>
+        {% for error in form.errors %}
+          <li>{{ error|t }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+  {{ form.openTag({ return: "#{uri}?success=✓" }) }}
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10 lg:w-3/4">
+      {% include '_partials/formfields/text' with {field: form.fields.name} only %}
+      {% include '_partials/formfields/text' with {field: form.fields.emailAddress} only %}
+      <div class="md:col-span-2">
+        {% include '_partials/formfields/textarea' with {field: form.fields.comments} only %}
+      </div>
+      <div class="md:col-span-2">
+        {% include '_partials/formfields/recaptcha' with {form: form} only %}
+      </div>
+    </div>
+    <input class="mt-6 btn" type="submit" value="Submit">
+  {{ form.closeTag }}
+</section>

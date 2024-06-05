@@ -1,0 +1,70 @@
+<table class="w-full mb-8 calendar">
+  <thead>
+    <tr>
+      {% for day in monthCal|first %}
+        <th class="px-4 py-3 text-lg text-center uppercase bg-content-table-heading-bg text-content-table-heading">
+          <span>{{ day.date.format('D') }}</span>
+        </th>
+      {% endfor %}
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for week in monthCal %}
+      <tr>
+        {% for day in week %}
+          {# Determine if day is apart of this month or previous or next #}
+          {% if monthCal.containsDate(day.date) %}
+            <td class="{% if day.date.isToday %}current{% endif %} w-[13%] p-3 border border-content-table-border">
+              {# Day with number and title. If 1st add month name abbr #}
+              <div class="day min-h-[140px]">
+                <div class="text-lg text-right number">
+                  <span>{{ day.date.format('j') }}</span>
+                </div>
+
+                {# Event output for day #}
+                {% if day.eventCount %}
+                  <ul>
+                    {% for event in day.events %}
+                      {% set eventClasses = [] %}
+                      {% if event.allDay %}
+                        {% set eventClasses = eventClasses|merge(['all-day']) %}
+                      {% endif %}
+                      {% if event.multiDay %}
+                        {% set eventClasses = eventClasses|merge(['multi-day']) %}
+                      {% endif %}
+                      {% set eventClasses = eventClasses|merge([event.calendar.handle|kebab]) %}
+                      <li class="{{ eventClasses|join(' ') }}">
+                        <a href="{{ uri }}/{{ event.slug }}" class="js-event-nav" title="{{ event.calendar.name }}">
+                          {% if not event.allDay %}
+                            <strong class="time text-brand-teal-light">
+                              {{ event.startDate.format('i') == '00' ? event.startDate.format('g a') : event.startDate.format('g:i a') }}
+                            </strong><br>
+                          {% else %}
+                            <strong class="time text-brand-teal-light">
+                              All Day
+                            </strong>
+                          {% endif %}
+                          <p class="leading-snug event-title hover:underline">{{ event.title }}</p>
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+            </td>
+          {% else %}
+            {# Days of previous or next month #}
+            <td class="p-3 border bg-content-table-alt-row-bg border-content-table-border">
+              <div class="day min-h-[140px]">
+                <div class="text-lg text-right number">
+                  <span>{{ day.date.format('j') }}</span>
+                </div>
+              </div>
+            </td>
+          {% endif %}
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

@@ -1,0 +1,54 @@
+{% extends "_layouts/base" %}
+{% set showSidebar = true %}
+{% set pageHeading = entry.pageHeading|default(entry.title) %}
+
+{% paginate craft.entries.section('blog').limit(10) as paginate, articles %}
+
+{% block pageLayout %}
+  {% embed "_layouts/page/default" %}
+    {% block contentLayout %}
+      {% embed "_layouts/content/default" %}
+        {% block mainContent %}
+          <h1 class="mt-6 md:mt-0 md:mb-4 main-heading">{{ pageHeading }}</h1>
+
+          {% if articles %}
+            <div class="divide-y divide-gray-100">
+              {% for article in articles %}
+                <div class="grid-cols-2 gap-6 py-6 -mx-4 md:grid md:mx-0">
+                  <div class="">
+                    {% set image = article.featuredPhoto.one() %}
+                    {% set imageTransform = {
+                        width: 767,
+                        height: 576,
+                        mode: 'crop'
+                    } %}
+                    {% if image %}
+                      <a href="{{ article.url }}"><img src="{{ image.getUrl(imageTransform) }}"></a>
+                    {% endif %}
+                  </div>
+                  <div class="px-4 pt-6 md:px-0 md:pt-0">
+                    <div class="mb-3 font-bold uppercase">{{ article.postDate | date('l, M j') }}</div>
+                    <h2 class="mb-4 text-3xl font-bold text-gray-600"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                    {% if article.excerpt is not empty %}
+                      <div class="mb-4 redactor">
+                        {{ article.excerpt }}
+                      </div>
+                    {% endif %}
+                    <a class="mb-0 font-bold text-gray-600" href="{{ article.url }}">Read more {{ svg("@webroot/img/icons/chevron-right-solid.svg")|attr({class: 'h-4 w-4 inline-block -mt-1 ml-0.5'}) }}</a>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <div class="pt-4">
+              {% include '_partials/nav/pagination' with {
+                'paginate': paginate,
+                'distance': 3,
+                'ariaLabel': 'News Pagination'
+              } only %}
+            </div>
+          {% endif %}
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

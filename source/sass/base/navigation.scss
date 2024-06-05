@@ -1,0 +1,17 @@
+/* purgecss start ignore */
+#main-nav {
+  .active {
+    a {
+      @apply md:bg-white/25;
+    }
+  }
+}
+
+.open {
+  @apply block;
+}
+
+#crumbs a {
+  @apply underline text-blue-700;
+}
+/* purgecss end ignore */

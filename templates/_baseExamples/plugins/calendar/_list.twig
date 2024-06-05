@@ -1,0 +1,56 @@
+{% if month|length %}
+  <ul class="events lg:px-20">
+    {% for week in month %}
+      {% for day in week %}
+        {% for event in day.events %}
+          <li class="{{ event.calendar.handle|kebab }} sm:flex mb-4">
+            <time datetime="{{ event.startDate.format('Y-m-d') }}" class="flex-[185px] flex-shrink-0 flex-grow-0 md:flex-[275px] md:flex-grow-0 md:flex-shrink-0 flex mb-3 sm:mb-0 sm:mr-6 py-4 px-4 md:px-12 items-center bg-brand-teal-dark text-white">
+              <div class="left-col">
+                <span class="mr-3 text-4xl md:mr-6">{{ day.date.format('j') }}</span>
+              </div>
+              <div class="right-col">
+                <strong class="uppercase md:text-xl ">{{ day.date.format('M') }}</strong><br/>
+                <span class="uppercase md:text-lg">{{ day.date.format('l') }}</span>
+              </div>
+            </time>
+            <div class="flex-grow pb-2 border-gray-300 description sm:border-b-2">
+              <div class="font-black uppercase time">
+                {% if event.allDay %}
+                  All Day
+                {% else %}
+                  {% if event.duration.days >= 1 %}
+                    {% if event.startDate.format("d") == day.date.format("d") %}
+                    starts at
+                      {{ event.startDate.format("i") == '00' ? event.startDate.format('g a') : event.startDate.format("g:i a") }}
+                    {% elseif event.endDate.format("d") == day.date.format("d") %}
+                      ends at 
+                      {{ event.endDate.format("i") == '00' ? event.endDate.format('g a') : event.endDate.format("M j, Y g:i a") }}
+                    {% else %}
+                      All Day
+                    {% endif %}
+                  {% else %}
+                    {{ event.startDate.format("i") == '00' ? event.startDate.format('g a') : event.startDate.format("g:i a") }} to
+                    {{ event.endDate.format("i") == '00' ? event.endDate.format('g a') : event.endDate.format("M j, Y g:i a") }}
+                  {% endif %}
+                {% endif %}
+              </div>
+              <h3 class="text-2xl font-black text-brand-teal-light">
+                <a href="{{ uri }}/{{ event.slug }}" class="js-event-nav">
+                  {{ event.title }}
+                  {% if event.duration.days >= 1 %}
+                    (Day {{ day.date.format('d') - event.startDate.format('d') + 1 }}/{{ event.duration.days + 1 }})
+                  {% endif %}
+                </a>
+              </h3>
+              <div class="tracking-wider uppercase event-type">
+                {{ event.directionslocation }}
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      {% endfor %}
+    {% endfor %}
+  </ul>
+{% else %}
+  <h4 class="mb-8 text-xl font-bold">There are no events scheduled for this time period.</h4>
+{% endif %}

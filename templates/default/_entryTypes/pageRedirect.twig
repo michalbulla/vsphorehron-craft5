@@ -1,0 +1,6 @@
+{# Redirect to a different page using the redirect link #}
+{% if entry.redirectStatusCode == '301' %}
+  {% redirect entry.redirectLink 301 %}
+{% else %}
+  {% redirect entry.redirectLink 302 %}
+{% endif %}

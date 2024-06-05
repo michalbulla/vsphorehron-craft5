@@ -1,0 +1,9 @@
+{#
+  {% include '_partials/formfields/recaptcha' with {form: form} only %}
+#}
+{{ form.recaptcha.render }}
+{% if form.recaptcha.hasErrors %}
+  <div class="mt-2 text-sm text-red-700 uppercase">
+    Please verify that a real person is submitting this form.
+  </div>
+{% endif %}

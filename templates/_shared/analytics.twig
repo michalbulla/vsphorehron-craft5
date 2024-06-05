@@ -1,0 +1,11 @@
+{% if craft.app.config.env == 'production' and seoSettings.analyticsId is defined and seoSettings.analyticsId is not empty %}
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ seoSettings.analyticsId }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ seoSettings.analyticsId }}');
+  </script>
+{% endif %}

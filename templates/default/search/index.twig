@@ -1,0 +1,65 @@
+{% extends "_layouts/base" %}
+{% set uri = 'search' %}
+{% set seoTitle = 'Search' %}
+
+{% set query = craft.app.request.getParam('q') %}
+{# {% set entries = craft.entries.search(query).orderBy('score').section('and, not staffDirectory').all() %} #}
+{% set results = craft.entries.search(query).orderBy('score').all() %}
+
+{% set pageHeading = query|length ? 'Search Results' : 'Search' %}
+
+{% block pageLayout %}
+  {% embed "_layouts/page/default" %}
+
+    {% block subNavMobile %}
+      {# Empty on purpose to not display the mobile sub navigation #}
+    {% endblock %}
+
+    {% block contentLayout %}
+      {% embed "_layouts/content/default" %}
+
+        {% block crumbs %}
+          {# Empty on purpose to not display the crumbs #}
+        {% endblock %}
+
+        {% block mainContent %}
+          <div class="max-w-[870px] mt-6 mx-auto">
+            <h1 class="main-heading mb-4">{{ pageHeading }}</h1>
+
+            {# Search Form #}
+            <form action="{{ url('search') }}" class="form-inline">
+                <div class="search-input">
+                  <label for="search-input" class="sr-only">Search this Website</label>
+                  <input id="search-input" class="border border-gray-300 px-4 py-2 rounded-lg w-full" type="text" name="q" placeholder="Search" {% if query | length %} value="{{ query }}" {% endif %}>
+                </div>
+                <button type="submit" class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+
+            {# Results #}
+            {% if query|length %}
+              {% if results|length %}
+                <h2 class="text-gray-600 text-lg font-bold mb-6">
+                  Showing
+                  {{ results|length }}
+                  {{ results|length == 1 ? 'result' : 'results' }}
+                  of your search for “{{ query }}”
+                </h2>
+                <ul class="search-results">
+                  {% for result in results %}
+                    <li class="mb-4">
+                      <h3 class="font-bold text-xl"><a class="underline" href="{{ result.url }}">{{ result.pageHeading|default(result.title) }}</a></h3>
+                      <p class="link">{{ result.url }}</p>
+                      <p>{{ result.seoDescription is defined ? result.seoDescription }}</p>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <p class="font-bold">Sorry, your search for “{{ query }}” returned no results.</p>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

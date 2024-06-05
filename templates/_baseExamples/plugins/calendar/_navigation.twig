@@ -1,0 +1,35 @@
+{# Set previous and next months #}
+{% set prevMonth = current|date_modify("last day of last month")|date('c') %}
+{% set nextMonth = current|date_modify("first day of next month")|date('c') %}
+
+{% set navigationUri = 'http://0666.craft3.test/' ~ uri %}
+
+<div class="items-center justify-between pb-4 mt-12 mb-6 border-b-2 md:flex border-brand-yellow-light">
+  <div>
+    <h2 class="mb-6 text-3xl font-black text-center uppercase md:mb-0 md:text-left text-brand-blue">{{ current|date('F Y') }}</h2>
+  </div>
+  <div class="justify-center sm:flex md:justify-end">
+    <div class="mb-3 view-nav md:mb-0">
+      <a href="{{ url( uri, {y:current|date('Y'), m:current|date('n'), v:'calendar'}) }}" class="w-max mx-auto md:mx-0 md:mr-6 items-center group mb-0 text-brand-blue text-xl uppercase font-black border-2 border-brand-blue p-[0.65rem] px-4 rounded-md bg-transparent hover:bg-brand-blue hover:text-white {% if view == 'list' %} hidden md:flex {% else %} hidden {% endif %}">
+        {{ svg("@webroot/img/icons/calendar.svg")|attr({class: 'h-5 w-5  fill-brand-blue  group-hover:fill-white inline-block'}) }}&nbsp;
+        Calendar View
+      </a>
+      <a href="{{ url( uri, {y:current|date('Y'), m:current|date('n'), v:'list'}) }}" class="w-max mx-auto md:mx-0 md:mr-6 items-center group mb-0 text-brand-blue text-xl uppercase font-black border-2  border-brand-blue p-[0.65rem] px-4 rounded-md hover:bg-brand-blue hover:text-white {%- if view == 'calendar' %} hidden md:flex {% else %} hidden{% endif %}">
+        {{ svg("@webroot/img/icons/list.svg")|attr({class: 'h-5 w-5 inline-block fill-brand-blue group-hover:fill-white'}) }}&nbsp;
+        List View
+      </a>
+    </div>
+
+    <div class="flex justify-center month-nav md:block">
+      {% apply spaceless %}
+        <a href="{{ url(uri, {y:prevMonth|date('Y'), m:prevMonth|date('n'), v:view}) }}" class="btn !mb-0 mr-2" title="Previous Month">{{ svg("@webroot/img/icons/chevron-left-solid.svg")|attr({class: 'h-5 w-5 inline-block'}) }}</a>
+        <a href="{{ url(uri, {y:'now'|date('Y'), m:'now'|date('n'), v:view}) }}" class="btn !mb-0 mr-2" title="Current Month">TODAY</a>
+        <a href="{{ url(uri, {y:nextMonth|date('Y'), m:nextMonth|date('n'), v:view}) }}" class="btn !mb-0" title="Next Month">{{ svg("@webroot/img/icons/chevron-right-solid.svg")|attr({class: 'h-5 w-5 inline-block'}) }}</a>
+      {% endapply %}
+    </div>
+  </div>
+</div>
+
+{% js %}
+  var eventNavView = '{{ view }}';
+{% endjs %}
