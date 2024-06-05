@@ -27,13 +27,18 @@
 
   {% set image = entry.image.one %}
 
-  {% if transform == "imageFull" %}
+  {#
+    This is commented out because we are not able to use the showSidebar variable here.
+
+    {% if transform == "imageFull" %}
     {% if showSidebar %}
       {% set transform = imageFullWithSidebar %}
     {% else %}
       {% set transform = imageFull %}
     {% endif %}
-  {% endif %}
+  {% endif %} #}
+
+  {% set transform = imageFull %}
 
   {% if image.width > image.getWidth(transform) %}
     {% do image.setTransform(transform) %}
