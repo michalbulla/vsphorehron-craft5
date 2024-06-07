@@ -1,6 +1,12 @@
 {# Redirect to a different page using the redirect link #}
+{% if entry.linkTypeForRedirect == 'entry' %}
+  {% set redirectLink = entry.linkToEntry.one.url %}
+{% elseif entry.linkTypeForRedirect == 'url' %}
+  {% set redirectLink = entry.urlLink %}
+{% endif %}
+
 {% if entry.redirectStatusCode == '301' %}
-  {% redirect entry.redirectLink 301 %}
+  {% redirect redirectLink 301 %}
 {% else %}
-  {% redirect entry.redirectLink 302 %}
+  {% redirect redirectLink 302 %}
 {% endif %}

@@ -1,0 +1,12 @@
+{% if entry.status == 'live' %}
+  <div class="btn-wrap {{ entry.alignmentButton }}">
+    {% if entry.linkType == 'entry' %}
+      {% set entryLink = entry.linkToEntry.one.url %}
+    {% elseif entry.linkType == 'email' %}
+      {% set entryLink = "mailto:#{entry.email}" %}
+    {% elseif entry.linkType == 'url' %}
+      {% set entryLink = entry.urlLink %}
+    {% endif %}
+    <a class="btn" href="{{ entryLink }}" {{ entry.openInNewWindow ? 'target="_blank"' }}>{{ entry.title }}</a>
+  </div>
+{% endif %}
