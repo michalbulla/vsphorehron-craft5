@@ -7,6 +7,6 @@
     {% elseif entry.linkType == 'url' %}
       {% set entryLink = entry.urlLink %}
     {% endif %}
-    <a class="btn" href="{{ entryLink }}" {{ entry.openInNewWindow ? 'target="_blank"' }}>{{ entry.title }}</a>
+    <a class="btn" href="{{ entryLink }}" {{ entry.openInNewWindow ? 'target="_blank"' }}>{{ entry.caption }}</a>
   </div>
 {% endif %}
