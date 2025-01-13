@@ -30,7 +30,7 @@ label.required::before {
 
 // Help text
 .help-text {
-  @apply block pl-1 text-sm mt-1 text-gray-400;
+  @apply block text-sm mb-2 ml-1;
 }
 
 // select.form-control:not([size]):not([multiple]) {
@@ -47,44 +47,30 @@ label.required::before {
 // Checkboxes and Radios ------------------------------------------------------
 
 // .form-check {
-//   position: relative;
-//   display: block;
-//   padding-left: 1.25rem;
+//   @apply relative block pl-5;
 // }
 
 // input[type="checkbox"],
 // input[type="radio"] {
 //   &.form-check-input {
-//     position: absolute;
-//     margin-left: -1.25rem;
+//     @apply absolute -ml-5 w-4 h-4 text-blue-600 bg-slate-100 border-slate-300 rounded;
 //   }
 // }
 
 // .form-check-input:disabled ~ .form-check-label {
-//   color: $color-placeholder;
+//   @apply text-gray-400;
 // }
 
 // .form-check-label {
-//   margin-bottom: 0;
-//   font-weight: normal;
+//   @apply mb-0 font-normal;
 // }
 
 // .form-check-inline {
-//   display: -webkit-inline-box;
-//   display: -ms-inline-flexbox;
-//   display: inline-flex;
-//   -webkit-box-align: center;
-//   -ms-flex-align: center;
-//   align-items: center;
-//   padding-left: 0;
-//   margin-right: 0.75rem;
+//   @apply inline-flex items-center pl-0 mr-3;
 // }
 
 // .form-check-inline .form-check-input {
-//   position: static;
-//   margin-top: 0;
-//   margin-right: 0.3125rem;
-//   margin-left: 0;
+//   @apply static mt-0 ml-0 mr-2;
 // }
 
 // Form Validation ------------------------------------------------------------
