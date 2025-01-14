@@ -60,6 +60,12 @@ module.exports = {
           pinterest: '#cb2027',
         },
       },
+      backgroundImage: {
+        // 'callout-red': "url('/img/callout-graphic_red.svg'), linear-gradient(to right, #E7751F, #D33D4C)",
+      },
+      boxShadow: {
+        // 'btn' : '2px 2px 0 rgba(0, 0, 0, .5)',
+      },
     },
   },
   variants: {
