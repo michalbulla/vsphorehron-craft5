@@ -13,7 +13,7 @@
   {{ svg("@webroot/img/icons/facebook-square-brands.svg")|attr({class: 'h-6 w-6 inline-block'}) }}<span class="sr-only">Facebook</span>
 </a>
 <a class="text-brand-twitter" href="https://twitter.com/intent/tweet?source={{ url }}&text={{ title }}" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;">
-  {{ svg("@webroot/img/icons/twitter-square-brands.svg")|attr({class: 'h-6 w-6 inline-block'}) }}<span class="sr-only">Twitter</span>
+  {{ svg("@webroot/img/icons/square-x-twitter-brands-solid.svg")|attr({class: 'h-6 w-6 inline-block'}) }}<span class="sr-only">Twitter</span>
 </a>
 <a class="text-brand-linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url={{ url }}&title={{ title }}&summary={{ excerpt }}&source={{ url }}" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;">
   {{ svg("@webroot/img/icons/linkedin-square-brands.svg")|attr({class: 'h-6 w-6 inline-block'}) }}<span class="sr-only">LinkedIn</span>
