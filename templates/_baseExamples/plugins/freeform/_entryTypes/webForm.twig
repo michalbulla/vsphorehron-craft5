@@ -12,6 +12,7 @@
         {% block mainContent %}
           <h1 class="main-heading">{{ pageHeading }}</h1>
 
+          {# This will display the success message configured directly in the form settings #}
           {% if craft.app.request.getQueryParam('success') == '✓' %}
             <div class="px-10 mt-10 text-2xl text-center text-white bg-gray-300 rounded-full py-7">{{ craft.freeform.form(formHandle).settings.successMessage }}</div>
           {% endif %}
@@ -30,6 +31,7 @@
             <p>Fields marked with <label class="required"></label> are required.</p>
           </div>
 
+          {# This will render the form #}
           {{ craft.freeform.form(formHandle, {
             id: formHandle,
             returnUrl: craft.app.request.absoluteUrl ~ '?success=✓'
