@@ -1,0 +1,40 @@
+{% if entry.mobileView == 'wide' %}
+  <p class="mobile-note-{{ entry.mobileView }}">Scroll the table to the right to see all information</p>
+{% endif %}
+<div class="table-wrap mobile-{{ entry.mobileView }}-wrap">
+  <div class="table-wrap-inside">
+    {% if entry.mobileView != 'mobile-columns' %}
+      <table class="mobile-{{ entry.mobileView }} listing {{ entry.showBorders | join(' ') }} {% if entry.rowsBackgroundColor != 'false' %}rows {{ entry.rowsBackgroundColor }}{% endif %}">
+        {% if entry.hideColumnsHeadings != true %}
+          <thead>
+            <tr>
+            {% for col in entry.table.columns %}
+              <th class="text-{{ col.align }}" width="{{ col.width }}">{{ col.heading }}</th>
+            {% endfor %}
+            </tr>
+          </thead>
+        {% endif %}
+
+        <tbody>
+          {% for row in entry.table.rows %}
+            <tr>
+            {% for cell in row %}
+              {% if entry.firstColumnCellsAreHeadings %}
+                {% if loop.first %}
+                  <td class="cell-heading text-{{ entry.table.columns[loop.index0].align }}">{{ cell }}</td>
+                {% else %}
+                  <td class="text-{{ entry.table.columns[loop.index0].align }}">{{ cell }}</td>
+                {% endif %}
+              {% else %}
+                <td class="text-{{ entry.table.columns[loop.index0].align }}">{{ cell }}</td>
+              {% endif %}
+            {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      
+    {% endif %}
+  </div>
+</div>
