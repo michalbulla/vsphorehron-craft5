@@ -1,5 +1,5 @@
 {% if entry.status == 'live' %}
   <div class="btn-wrap {{ entry.alignmentButton }}">
-    <a class="btn" href="{{ entry.buttonLink }}" {{ entry.openInNewWindow ? 'target="_blank"' }}>{{ entry.caption }}</a>
+    <a class="btn" href="{{ entry.buttonLink }}" {{ entry.buttonLink.target ? 'target="_blank"' }}>{{ entry.buttonLink.label }}</a>
   </div>
 {% endif %}
