@@ -22,13 +22,13 @@
   "prefer-stable": true,
   "require": {
     "craftcms/aws-s3": "2.2.1",
-    "craftcms/ckeditor": "4.5.0",
-    "craftcms/cms": "5.6.6",
+    "craftcms/ckeditor": "4.6.0",
+    "craftcms/cms": "5.6.11",
     "tungsten/tungsten": "^4.0",
     "vaersaagod/seomate": "3.1.1",
-    "verbb/expanded-singles": "3.0.1",
+    "verbb/expanded-singles": "3.0.2",
     "verbb/field-manager": "4.0.3",
-    "verbb/tablemaker": "5.0.4",
+    "verbb/tablemaker": "5.0.5",
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {
