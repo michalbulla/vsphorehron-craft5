@@ -9,7 +9,7 @@
   },
   buttons: {
     attributes: {
-      submit: { class: "btn btn-gold" },
+      submit: { class: "btn mt-6" },
     },
   },
   fields: {
@@ -82,6 +82,25 @@
 
         <div class="default-content">
           {{ field.render() }}
+        </div>
+
+      {% elseif field.type == "checkbox" %}
+
+        <div class="flex mb-4">
+          <input type="checkbox"
+            name="{{ field.handle }}[]"
+            value="{{ field.value }}"
+            id="{{ field.idAttribute }}"
+            class="form-check-input"
+            {{ field.value in field.value ? 'checked' }}
+          />
+
+          <div class="ml-2 -mt-1">
+            {{ field.renderErrors() }}
+            <label class="text-base font-normal {{ field.required ? 'required' }}" for="{{ field.idAttribute }}">
+              {{ field.label|t|raw }}
+            </label>
+          </div>
         </div>
 
       {% else %}
