@@ -21,9 +21,9 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "craftcms/aws-s3": "2.2.2",
-    "craftcms/ckeditor": "4.8.0",
-    "craftcms/cms": "5.7.7",
+    "craftcms/aws-s3": "2.2.3",
+    "craftcms/ckeditor": "4.9.0",
+    "craftcms/cms": "5.7.10",
     "tungsten/tungsten": "^4.0",
     "vaersaagod/seomate": "3.1.1",
     "verbb/expanded-singles": "3.0.2",
