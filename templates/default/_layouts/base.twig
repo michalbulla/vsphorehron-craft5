@@ -23,8 +23,12 @@
   <!-- Custom styles for this template -->
   <link href="{{ craft.tungsten.assetUrl('styles.css') }}" rel="stylesheet">
 
+  {% set globalScripts = siteSettings.scripts.all %}
+  {% include '_shared/globalScripts' with {globalScripts: globalScripts, position: 'head'} %}
+
 </head>
 <body class="font-primary text-content-text">
+  {% include '_shared/globalScripts' with {globalScripts: globalScripts, position: 'bodyBegin'} %}
   <a href="#main-content-start" class="sr-only sr-only-focusable" title="Skip over the navigation directly to main content of the page">Skip to main content</a>
   {% block pageLayout %}
   {% endblock %}
@@ -38,5 +42,7 @@
 
   {# Include all JS collected through 'js' and 'view.registerJsFile(url)' #}
   {{ endBody() }}
+
+  {% include '_shared/globalScripts' with {globalScripts: globalScripts, position: 'bodyEnd'} %}
 </body>
 </html>

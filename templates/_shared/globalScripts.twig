@@ -1,0 +1,16 @@
+{% if globalScripts|length %}
+  {% for block in globalScripts %}
+    {% if block.scriptRenderLocation == position -%}
+      <!-- {{ block.title }} -->
+      {%~ if craft.app.config.env == 'production' and block.onlyIncludeInProduction %}
+        {{ block.scriptCode|raw }}
+      {%~ else %}
+        {% if block.onlyIncludeInProduction %}
+          <!-- script code is not rendered in {{ craft.app.config.env }} environment -->
+        {% else %}
+          {{ block.scriptCode|raw }}
+        {% endif %}
+      {%~ endif %}
+    {%- endif %}
+  {% endfor %}
+{% endif %}
