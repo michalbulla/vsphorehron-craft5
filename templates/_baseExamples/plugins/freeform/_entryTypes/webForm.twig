@@ -4,6 +4,7 @@
 {% set uri = entry.uri %}
 {% set showSidebar = entry.hideSidebar != 1 %}
 {% set pageHeading = entry.pageHeading|default(entry.title) %}
+{% set formHandle = entry.form.handle %}
 
 {% block pageLayout %}
   {% embed '_layouts/page/default' %}
