@@ -1,7 +1,7 @@
-{% if block.linkUrl.getLink()|length %}
-  <a href="{{block.linkUrl}}" {% if block.linkUrl.getTarget() == "_blank" %} target="_blank" {% endif %}>
+{% if block.headingLink %}
+  <a href="{{block.headingLink}}" {{ block.headingLink.target ? 'target="_blank"' }}>
 {% endif %}
-<{{ block.headingLevel }} class="text-{{ block.alignment }}">{{ block.heading }}</{{ block.headingLevel }}>
-{% if block.linkUrl.getLink()|length %}
+<{{ block.headingLevel }} class="text-{{ block.alignment }}">{{ block.title }}</{{ block.headingLevel }}>
+{% if block.headingLink %}
   </a>
 {% endif %}

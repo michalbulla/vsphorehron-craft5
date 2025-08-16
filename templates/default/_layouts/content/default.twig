@@ -11,7 +11,7 @@
         {% cache %}
           <h1 class="main-heading">{{ pageHeading }}</h1>
           <div class="default-content">
-            {{ entry.mainContent }}
+            {% include '_partials/contentBuilder' with {contentField: entry.mainContent, blocksDir: 'mainContent'} %}
           </div>
         {% endcache %}
       {% endblock %}

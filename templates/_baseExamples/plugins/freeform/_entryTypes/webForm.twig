@@ -20,7 +20,7 @@
 
           <div class="max-w-5xl mx-auto mt-10 mb-20">
             <div class="default-content">
-              {{ entry.mainContent }}
+              {% include '_partials/contentBuilder' with {contentField: entry.mainContent, blocksDir: 'mainContent'} %}
             </div>
           </div>
 

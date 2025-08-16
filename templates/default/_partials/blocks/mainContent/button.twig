@@ -1,3 +1,3 @@
-<div class="btn-wrap {{ block.alignment == "sideBySide" ? 'sideBySide' : block.alignment }}">
-  <a class="btn" href="{{ block.button }}" {{ block.button.getTarget() == "_blank" ? 'target="_blank"' }}>{{ block.button.getText() }}</a>
+<div class="btn-wrap {{ block.alignmentButton }}">
+  <a class="btn" href="{{ block.buttonLink }}" {{ block.buttonLink.target ? 'target="_blank"' }}>{{ block.buttonLink.label }}</a>
 </div>
