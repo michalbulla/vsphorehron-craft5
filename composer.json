@@ -22,7 +22,7 @@
   "prefer-stable": true,
   "require": {
     "craftcms/aws-s3": "2.2.3",
-    "craftcms/ckeditor": "4.10.0",
+    "craftcms/ckeditor": "4.10.1",
     "craftcms/cms": "5.8.15",
     "tungsten/tungsten": "^4.0",
     "vaersaagod/seomate": "3.2.0",
