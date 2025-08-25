@@ -15,10 +15,10 @@
 
           {# This will display the success message configured directly in the form settings #}
           {% if craft.app.request.getQueryParam('success') == '✓' %}
-            <div class="px-10 mt-10 text-2xl text-center text-white bg-gray-300 rounded-full py-7">{{ craft.freeform.form(formHandle).settings.successMessage }}</div>
+            <div class="px-10 mt-10 text-xl text-center bg-gray-600 rounded-md py-7">{{ craft.freeform.form(formHandle).settings.successMessage }}</div>
           {% endif %}
 
-          <div class="max-w-5xl mx-auto mt-10 mb-20">
+          <div class="max-w-5xl mx-auto mt-10 mb-4">
             <div class="default-content">
               {% include '_partials/contentBuilder' with {contentField: entry.mainContent, blocksDir: 'mainContent'} %}
             </div>

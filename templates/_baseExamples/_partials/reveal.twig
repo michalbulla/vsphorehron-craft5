@@ -1,0 +1,19 @@
+{#
+  {% include '_partials/reveal' with {title: '', content: ''} only %}
+#}
+<div class="my-5 rounded shadow-default">
+  <div class="flex items-center justify-between px-5 py-3 cursor-pointer bg-brand-yellow/10 text-brand-green" _="on click toggle .hidden on .js-reveal in me toggle .hidden on the next .js-reveal-body">
+    <div class="flex-grow text-xl font-bold hover:underline">
+      {{ title }}
+    </div>
+    <div class="text-brand-green-dark">
+      {{ svg("@webroot/img/icons/circle-plus-solid.svg")|attr({class: 'h-5 w-5 inline-block js-reveal text-brand-green-dark'}) }}
+      {{ svg("@webroot/img/icons/circle-minus-solid.svg")|attr({class: 'h-5 w-5 inline-block hidden js-reveal text-brand-green-dark'}) }}
+    </div>
+  </div>
+  <div class="hidden px-5 py-4 js-reveal-body">
+    <div class="default-content">
+      {{ content }}
+    </div>
+  </div>
+</div>
