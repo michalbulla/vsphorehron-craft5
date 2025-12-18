@@ -1,6 +1,6 @@
 CRAFT_VERSION=craft5
-SITE_CODE=
-BETA_SERVER=dev-2.nlcnet.net
-BETA_DOMAIN=XXXX.craft5.atomicbeta.com
+SITE_NAME=vsphorehron
+BETA_SERVER=server2025.embis.sk
+BETA_DOMAIN=vsphorehron.dev2025.embis.sk
 LIVE_SERVER=
 SITE_DOMAIN=

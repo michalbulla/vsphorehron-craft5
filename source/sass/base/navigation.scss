@@ -2,7 +2,7 @@
 #main-nav {
   .active {
     a {
-      @apply md:bg-white/25;
+      @apply md:bg-white/40;
     }
   }
 }
@@ -12,6 +12,6 @@
 }
 
 #crumbs a {
-  @apply underline text-blue-700;
+  @apply underline text-content-text;
 }
 /* purgecss end ignore */

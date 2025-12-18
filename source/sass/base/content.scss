@@ -19,9 +19,10 @@
   CONTENT BUILDER STYLES     **************************************************
 -----------------------------------------------------------------------------*/
 
+
 .default-content {
   p {
-    @apply mb-4;
+    @apply mb-4 text-lg;
   }
 
   p,
@@ -110,6 +111,12 @@
         @apply mb-16;
       }
     }
+  }
+}
+
+.intro-content {
+  p {
+    @apply mb-4 text-xl;
   }
 }
 

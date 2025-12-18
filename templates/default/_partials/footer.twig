@@ -1,9 +1,24 @@
-<footer>
-  <div class="mt-8 bg-gray-300">
-    <div class="xl:container">
-      <div class="p-2 md:p-4">
-        <p class="text-sm text-center">&copy;{{ 'now'|date('Y') }} {{ siteName }}. All Rights Reserved.</p>
-        {% include '_partials/signature' %}
+<footer class="bg-gradient-to-b from-brand-one to-brand-two/80 text-white">
+  <div class="lg:container px-4">
+    <div class="md:flex justify-between gap-8 pt-8">
+      <div class="adresa">
+        {# <img src="/img/logo.jpg" alt="Rojas Logo"> #}
+        <h2 class="font-bold text-2xl mb-4">Adresa kancelárie</h2>
+        <p class="text-brand-three mb-4"><strong>VSP Horehron</strong></br>Školská 349/6<br/>976 69 Pohorelá<br/>Slovenská republika</p>
+        <p class="text-brand-three mb-4">
+          <strong>IČO:</strong> 45022089<br/>
+          <strong>Dátum vzniku:</strong> 27.03.2000        
+        </p>
+      </div>
+      <div>
+        <h2 class="font-bold text-2xl mb-4">Manažment</h2>
+        <p class="text-brand-three mb-4"><strong>Ing. Jana Tkáčiková</strong><br/>predsedníčka VSP Horehron</p>
+        <p class="text-brand-three mb-4"><strong>Ing. Lucia Vačoková</strong><br/>manažér VSP Horehron</p>
+      </div>
+      <div>
+        <h2 class="font-bold text-2xl mb-4">Kontakt</h2>
+        <p class="phone text-brand-three mb-4">{{ svg("@webroot/img/icons/phone-alt-solid.svg")|attr({class: 'h-6 w-6 inline-block mr-4'}) }} +421 915 810 813<br/></p>
+        <p class="email text-brand-three mb-4"><a href="mailto:vsphorehron@gmail.com ">{{ svg("@webroot/img/icons/envelope-solid.svg")|attr({class: 'h-6 w-6 inline-block mr-4'}) }} vsphorehron@gmail.com </a></p>
       </div>
     </div>
   </div>

@@ -1,0 +1,64 @@
+{% extends "_layouts/base" %}
+{% set uri = entry.uri|default('blog') %}
+{% set pageHeading = entry.pageHeading|default(entry.title) %}
+
+{% set showSidebar = true %}
+
+{% block pageLayout %}
+  {% embed '_layouts/page/default' %}
+    
+    {% block contentLayout %}
+      {% embed '_layouts/content/default' %}
+
+        {% block mainContent %}
+          {% cache %}
+            <h1 class="main-heading">{{ pageHeading }}</h1>
+
+            <div class="default-content">
+              <h2>Aktuálne výzvy</h2>
+              {% set openArticles = craft.entries.section('vyzvy').kategoria(entry.kategoria).statusVyzvy(0).all %}
+              {% if openArticles|length %}
+                <div class="list">
+                  {% for article in openArticles %}
+                    <div class="list-block">
+                      <div class="list-copy border-b border-brand-one/70">
+                        <h3><a href="{{ article.linkUrl ? article.linkUrl : article.url }}" {{ article.linkUrl ? 'target="_blank"' }}>{{ article.pageHeading|length ? article.pageHeading : article.title }}</a></h3>
+                        <p>{{ article.kratkyPopis }}</p>
+                        <div class="btn-wrap">
+                          <a href="{{ article.linkUrl ? article.linkUrl : article.url }}" {{ article.linkUrl ? 'target="_blank"' }} class="btn">Čítaj viac</a>
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <p><strong>Momentálne nie sú k dispozícii žiadne výzvy.</strong></p>  
+              {% endif %}
+            </div>            
+            
+            
+            {% set closedArticles = craft.entries.section('vyzvy').kategoria(entry.kategoria).statusVyzvy(1).all %}
+            {% if closedArticles|length %}
+              <div class="default-content">
+                <h2>Uzavreté výzvy</h2>
+                <div class="list">
+                  {% for article in closedArticles %}
+                    <div class="list-block">
+                      <div class="list-copy">
+                        <h3><a href="{{ article.linkUrl ? article.linkUrl : article.url }}" {{ article.linkUrl ? 'target="_blank"' }}>{{ article.pageHeading|length ? article.pageHeading : article.title }}</a></h3>
+                        <p>{{ article.kratkyPopis }}</p>
+                        <div class="btn-wrap">
+                          <a href="{{ article.linkUrl ? article.linkUrl : article.url }}" {{ article.linkUrl ? 'target="_blank"' }} class="btn">Čítaj viac</a>
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endcache %}
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

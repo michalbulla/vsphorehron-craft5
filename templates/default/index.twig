@@ -7,10 +7,58 @@
   {% embed '_layouts/page/homePage' %}
     {% block contentLayout %}
       <div class="main-content" id="main-content-start">
-        <div class="container">
-          {# {% include '_partials/carousel' %} #}
-          <h1>{{ entry.title }}</h1>
+        <div class="container mt-8 mb-8">
+          <h1 class="main-heading text-center">{{ entry.pageHeading }}</h1>
+          <div class="default-content text-center intro-content">
+            {% include '_partials/contentBuilder' with {contentField: entry.mainContent, blocksDir: 'mainContent'} %}
+          </div>
+          <div class="btn-wrap center">
+            <a href="/o-vsp" class="btn">Čítaj viac</a>
+          </div>
         </div>
+
+        <section class="vyzvy-section bg-brand-one py-8 pb-12">
+          <div class="lg:container px-4 default-content">
+            <h2 class="!text-white !text-4xl text-center">Najnovšie výzvy</h2>
+            <div class="vyzvy md:grid grid-cols-2 gap-8 mt-8">
+              {# IROP #}
+              <div class="block bg-white rounded-md p-6 shadow-md mb-8 md:mb-0">
+                {% set iropVyzvy = craft.entries.section('vyzvy').kategoria('irop').limit(3).all() %}
+                <h2 class="!mt-2">IROP výzvy</h2>
+                {% for vyzva in iropVyzvy %}
+                  <div class="vyzva mb-4">
+                    <h3><a class="underline hover:no-underline" href="{{ vyzva.url }}">{{ vyzva.title }}</a></h3>
+                    <p>{{ vyzva.kratkyPopis }}</p>
+                  </div>
+                {% endfor %}
+                <div class="btn-wrap">
+                  <a href="/irop" class="btn">Všetky IROP výzvy</a>
+                </div>
+              </div>
+
+              {# PRV #}
+              <div class="block bg-white rounded-md p-6 shadow-md mb-8 md:mb-0">
+                {% set iropVyzvy = craft.entries.section('vyzvy').kategoria('prv').limit(3).all() %}
+                <h2 class="!mt-2">PRV výzvy</h2>
+                {% for vyzva in iropVyzvy %}
+                  <div class="vyzva mb-4">
+                    <h3><a class="underline hover:no-underline" href="{{ vyzva.url }}">{{ vyzva.title }}</a></h3>
+                    <p>{{ vyzva.kratkyPopis }}</p>
+                  </div>
+                {% endfor %}
+                <div class="btn-wrap">
+                  <a href="/prv" class="btn">Všetky PRV výzvy</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="map">
+          <div class="video-content">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2914.0199940270613!2d20.013148461484207!3d48.86422381804904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473fd32afb81a693%3A0xffd4288914b15eee!2sVSP%20Horehron!5e1!3m2!1sen!2ssk!4v1649314743655!5m2!1sen!2ssk" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </section>
       </div>
     {% endblock %}
   {% endembed %}

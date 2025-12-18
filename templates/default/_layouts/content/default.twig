@@ -6,7 +6,7 @@
   </div>
 
   <div id="content" class="flex gap-8 justify-items-start">
-    <div id="main-content-start" class="flex-grow max-w-full">
+    <div id="main-content-start" class="flex-grow max-w-full mb-12">
       {% block mainContent %}
         {% cache %}
           <h1 class="main-heading">{{ pageHeading }}</h1>
@@ -18,7 +18,7 @@
     </div>
 
     {% if showSidebar is defined and showSidebar %}
-      <div id="sidebar" class="hidden w-[280px] flex-shrink-0 md:block">
+      <div id="sidebar" class="hidden w-[280px] mb-8 flex-shrink-0 md:block">
         {% block subNav %}
           {% include '_partials/nav/sub' %}
         {% endblock %}
