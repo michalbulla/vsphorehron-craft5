@@ -2,5 +2,5 @@ CRAFT_VERSION=craft5
 SITE_NAME=vsphorehron
 BETA_SERVER=server2025.embis.sk
 BETA_DOMAIN=vsphorehron.dev2025.embis.sk
-LIVE_SERVER=
-SITE_DOMAIN=
+LIVE_SERVER=server2025.embis.sk
+SITE_DOMAIN=vsphorehron.sk
